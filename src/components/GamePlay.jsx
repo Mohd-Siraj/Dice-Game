@@ -11,7 +11,7 @@ function GamePlay() {
   const [selectedNumber, setSelectedNumber] = useState();
   const [currentDice, setCurrentDice] = useState(1);
   const [error, setError] = useState("");
-  const [showRules,setShowRules] = useState(false);
+  const [showRules, setShowRules] = useState(false);
 
   const generateRandomNumber = () => {
     return Math.floor(Math.random() * 6) + 1;
@@ -43,38 +43,39 @@ function GamePlay() {
   return (
     <MainContainer>
       <div className="main-section">
-      <TotalScore score={score} />
-      <NumberSelector
-        setError={setError}
-        error={error}
-        selectedNumber={selectedNumber}
-        setSelectedNumber={setSelectedNumber} />
-
+        <TotalScore score={score} />
+        <NumberSelector
+          setError={setError}
+          error={error}
+          selectedNumber={selectedNumber}
+          setSelectedNumber={setSelectedNumber}
+        />
       </div>
       <RoleDice currentDice={currentDice} roleDice={roleDice} />
-    <div className="btns">
+      <div className="btns">
         <Button onClick={() => setScore(0)}>Reset</Button>
-        <Button onClick={() => setShowRules((prev) => !prev)}> {showRules ? "Hide rules" : " Show rules"}</Button>
+        <Button onClick={() => setShowRules((prev) => !prev)}>
+          {showRules ? "Hide rules" : " Show rules"}
+        </Button>
       </div>
-      {showRules && <Rules/>}
+      <div>{showRules && <Rules />}</div>
     </MainContainer>
   );
 }
 export default GamePlay;
 
 const MainContainer = styled.main`
-
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
   /* padding: 0px 0px; */
-  .main-section{
+  .main-section {
     display: flex;
     width: 1280px;
     justify-content: space-around;
   }
-  .btns{
+  .btns {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
